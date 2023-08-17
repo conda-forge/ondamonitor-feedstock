@@ -1,5 +1,5 @@
 {% set name = "ondamonitor" %}
-{% set version = "21.5.0" %}
+{% set version = "23.8.2" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/omdevteam/om/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 29a9843507cda03d693c54d1bb2aa69efe167e6b64819d80c2e73b2e57fc225f
+  sha256: 9a961f34bfb472c064bc86c66386352365e1c3a3d4657a0d654b68845526da5c
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
   skip: true  # [not linux64]
 
