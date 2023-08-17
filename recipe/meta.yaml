@@ -20,11 +20,13 @@ requirements:
     - {{ compiler("cxx") }}
     - make
   host:
+    - {{ mpi }}  # [mpi != 'nompi']
     - python
     - numpy
     - setuptools
     - pip
   run:
+    - {{ mpi }}  # [mpi != 'nompi']
     - python
     - numpy
     - click
