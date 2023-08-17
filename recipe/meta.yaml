@@ -37,6 +37,7 @@ requirements:
     - msgpack-python
     - mpi4py
     - mypy_extensions
+    - openssh
     - pillow
     - pyqt
     - pyqtgraph
