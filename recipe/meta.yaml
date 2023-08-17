@@ -30,16 +30,19 @@ requirements:
     - click
     - fabio
     - h5py
+    - msgpack-numpy
     - msgpack-python
     - mpi4py
     - mypy_extensions
+    - pillow
     - pyqt
     - pyqtgraph
     - pyyaml
     - pyzmq
+    - rich
+    - ruamel_yaml
     - scipy
     - typing
-    - typing_extensions
 
 test:
   imports:
@@ -47,9 +50,10 @@ test:
     - om.algorithms
     - om.data_retrieval_layer
     - om.graphical_interfaces
+    - om.lib
     - om.parallelization_layer
     - om.processing_layer
-    - om.utils
+    - om.protocols
   commands:
     - om_monitor.py --help
 
