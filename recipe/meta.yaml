@@ -1,5 +1,5 @@
 {% set name = "ondamonitor" %}
-{% set version = "21.5.0" %}
+{% set version = "23.8.2" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/omdevteam/om/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 29a9843507cda03d693c54d1bb2aa69efe167e6b64819d80c2e73b2e57fc225f
+  sha256: 9a961f34bfb472c064bc86c66386352365e1c3a3d4657a0d654b68845526da5c
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
   skip: true  # [not linux64]
 
@@ -20,26 +20,33 @@ requirements:
     - {{ compiler("cxx") }}
     - make
   host:
+    - {{ mpi }}  # [mpi != 'nompi']
     - python
     - numpy
     - setuptools
     - pip
   run:
+    - {{ mpi }}  # [mpi != 'nompi']
     - python
     - numpy
     - click
     - fabio
+    - hdf5plugin
     - h5py
+    - msgpack-numpy
     - msgpack-python
     - mpi4py
     - mypy_extensions
+    - openssh
+    - pillow
     - pyqt
     - pyqtgraph
     - pyyaml
     - pyzmq
+    - rich
+    - ruamel_yaml
     - scipy
     - typing
-    - typing_extensions
 
 test:
   imports:
@@ -47,9 +54,10 @@ test:
     - om.algorithms
     - om.data_retrieval_layer
     - om.graphical_interfaces
+    - om.lib
     - om.parallelization_layer
     - om.processing_layer
-    - om.utils
+    - om.protocols
   commands:
     - om_monitor.py --help
 
